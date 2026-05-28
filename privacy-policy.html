@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade — Meu Pet Hoje</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #FAFAF8;
+      color: #1a1a1a;
+      line-height: 1.7;
+      padding: 40px 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .logo { text-align: center; margin-bottom: 32px; }
+    .logo span { font-size: 48px; }
+    h1 { font-size: 28px; font-weight: 800; color: #FF6040; margin-bottom: 8px; text-align: center; }
+    .updated { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
+    h2 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin: 32px 0 12px; }
+    p, li { font-size: 15px; color: #444; margin-bottom: 8px; }
+    ul { padding-left: 20px; }
+    a { color: #FF6040; }
+    .contact {
+      background: #fff;
+      border: 1px solid #e8e8e4;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo"><span>🐾</span></div>
+  <h1>Política de Privacidade</h1>
+  <p class="updated">Última atualização: 27 de maio de 2026</p>
+
+  <p>
+    O <strong>Meu Pet Hoje</strong> é um aplicativo para hotéis pet e tutores de animais, desenvolvido por
+    Diego Oliveira. Esta política descreve como coletamos, usamos e protegemos as suas informações.
+  </p>
+
+  <h2>1. Informações que coletamos</h2>
+  <p>Coletamos apenas o necessário para o funcionamento do app:</p>
+  <ul>
+    <li><strong>Dados de conta:</strong> nome, e-mail e senha (armazenados com segurança via Supabase Auth).</li>
+    <li><strong>Dados do hotel:</strong> nome do estabelecimento, telefone e endereço (preenchidos pelo usuário).</li>
+    <li><strong>Dados dos pets:</strong> nome, raça, idade, peso, fotos e atualizações de hospedagem.</li>
+    <li><strong>Fotos e vídeos:</strong> enviados pelo usuário para registrar atualizações dos pets.</li>
+  </ul>
+
+  <h2>2. Como usamos as informações</h2>
+  <ul>
+    <li>Autenticar e identificar usuários no aplicativo.</li>
+    <li>Exibir informações dos pets para hotéis e tutores vinculados.</li>
+    <li>Enviar notificações sobre atualizações dos pets (quando habilitado).</li>
+    <li>Enviar convites de acesso por e-mail.</li>
+  </ul>
+
+  <h2>3. Compartilhamento de dados</h2>
+  <p>
+    <strong>Não vendemos, alugamos ou compartilhamos</strong> seus dados com terceiros para fins
+    comerciais. Os dados são compartilhados somente entre o hotel pet e os tutores
+    explicitamente vinculados ao pet.
+  </p>
+  <p>Utilizamos os seguintes serviços de terceiros:</p>
+  <ul>
+    <li><strong>Supabase</strong> — banco de dados e autenticação (servidores na AWS, região us-east-1).</li>
+    <li><strong>Resend</strong> — envio de e-mails transacionais (convites).</li>
+  </ul>
+
+  <h2>4. Armazenamento e segurança</h2>
+  <p>
+    Seus dados são armazenados em servidores seguros com criptografia em trânsito (HTTPS/TLS)
+    e em repouso. Senhas nunca são armazenadas em texto simples — utilizamos o sistema de
+    autenticação do Supabase com hashing bcrypt.
+  </p>
+  <p>
+    No dispositivo, mantemos apenas a sessão de login em armazenamento seguro (iOS Keychain /
+    Android Keystore) e nunca em texto simples.
+  </p>
+
+  <h2>5. Seus direitos</h2>
+  <p>Você pode, a qualquer momento:</p>
+  <ul>
+    <li><strong>Acessar</strong> seus dados pelo próprio aplicativo.</li>
+    <li><strong>Corrigir</strong> informações incorretas na tela de perfil.</li>
+    <li><strong>Excluir</strong> sua conta e todos os dados associados — entre em contato conosco.</li>
+    <li><strong>Revogar</strong> o acesso de tutores aos pets a qualquer momento.</li>
+  </ul>
+
+  <h2>6. Dados de menores</h2>
+  <p>
+    O aplicativo não é destinado a crianças menores de 13 anos. Não coletamos intencionalmente
+    dados de menores.
+  </p>
+
+  <h2>7. Câmera e galeria de fotos</h2>
+  <p>
+    O acesso à câmera e galeria é solicitado apenas para enviar fotos e vídeos dos pets.
+    Essas mídias são armazenadas no nosso servidor e exibidas para os tutores vinculados.
+    Não usamos câmera em segundo plano.
+  </p>
+
+  <h2>8. Alterações nesta política</h2>
+  <p>
+    Podemos atualizar esta política periodicamente. Notificaremos usuários sobre mudanças
+    significativas via e-mail ou notificação no app.
+  </p>
+
+  <div class="contact">
+    <h2 style="margin-top:0">9. Contato</h2>
+    <p>Dúvidas sobre privacidade? Entre em contato:</p>
+    <p>📧 <a href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a></p>
+    <p>🌐 <a href="https://meupethoje.com.br">meupethoje.com.br</a></p>
+  </div>
+</body>
+</html>
