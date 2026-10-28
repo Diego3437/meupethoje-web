@@ -1,157 +1,401 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Pet Hoje — A timeline do seu pet no hotel</title>
-  <meta name="description" content="Acompanhe cada momento do seu pet no hotel em tempo real. Fotos, atualizações e notificações direto no seu celular." />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #FF6040 0%, #FF8C6A 100%);
-      color: white;
-      padding: 80px 24px 100px;
-      text-align: center;
-    }
-    .logo {
-      width: 96px; height: 96px; border-radius: 22px;
-      background: white;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 48px;
-    }
-    .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; }
-    .hero p  { font-size: 1.15rem; opacity: 0.92; max-width: 500px; margin: 0 auto 40px; line-height: 1.6; }
-    .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,0,0,0.18); border: 1.5px solid rgba(255,255,255,0.4);
-      color: white; padding: 10px 20px; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 600; text-decoration: none;
-      transition: background 0.2s;
-    }
-    .badge:hover { background: rgba(0,0,0,0.28); }
-
-    /* FEATURES */
-    .features { padding: 72px 24px; max-width: 900px; margin: 0 auto; }
-    .features h2 { text-align: center; font-size: 1.9rem; font-weight: 800; margin-bottom: 48px; color: #1a1a1a; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
-    .card {
-      background: #f9f9f9; border-radius: 16px; padding: 28px 24px;
-      border: 1px solid #eee;
-    }
-    .card .icon { font-size: 2rem; margin-bottom: 12px; }
-    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
-    .card p  { font-size: 0.9rem; color: #555; line-height: 1.6; }
-
-    /* ROLES */
-    .roles { background: #fff8f6; padding: 72px 24px; }
-    .roles-inner { max-width: 900px; margin: 0 auto; }
-    .roles h2 { text-align: center; font-size: 1.9rem; font-weight: 800; margin-bottom: 48px; }
-    .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    @media (max-width: 600px) { .roles-grid { grid-template-columns: 1fr; } }
-    .role-card {
-      background: white; border-radius: 20px; padding: 32px 28px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
-    }
-    .role-card .role-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-    .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .role-card li { font-size: 0.92rem; color: #444; display: flex; gap: 8px; align-items: flex-start; }
-    .role-card li::before { content: '✓'; color: #FF6040; font-weight: 700; flex-shrink: 0; }
-
-    /* FOOTER */
-    footer {
-      background: #1a1a1a; color: #aaa; text-align: center;
-      padding: 40px 24px; font-size: 0.88rem;
-    }
-    footer a { color: #FF6040; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meu Pet Hoje — o dia do pet, do hotel para o celular do tutor</title>
+<meta name="description" content="App para hotéis e creches pet: sua equipe registra refeições, passeios e fotos em segundos e o tutor acompanha o dia do pet pelo celular. Agende uma demonstração." />
+<link rel="canonical" href="https://meupethoje.com.br/" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#FF6040" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Meu Pet Hoje" />
+<meta property="og:title" content="Meu Pet Hoje — app para hotéis e creches pet" />
+<meta property="og:description" content="App para hotéis e creches pet: sua equipe registra refeições, passeios e fotos em segundos e o tutor acompanha o dia do pet pelo celular. Agende uma demonstração." />
+<meta property="og:url" content="https://meupethoje.com.br/" />
+<meta property="og:image" content="https://meupethoje.com.br/assets/img/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/assets/css/site.css?v=2" />
+<link rel="stylesheet" href="/assets/css/home.css?v=3" />
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.55.02-2.97.9-3.77 2.28-1.6 2.79-.41 6.92 1.16 9.18.76 1.11 1.67 2.35 2.87 2.31 1.15-.05 1.58-.75 2.97-.75 1.39 0 1.78.75 3 .72 1.24-.02 2.02-1.13 2.78-2.24.87-1.28 1.23-2.52 1.25-2.59-.03-.01-2.4-.92-2.42-3.69ZM14.1 5.82c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.1 1.77-.96 2.82 1.02.08 2.06-.52 2.7-1.28Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></symbol>
+</svg>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Meu Pet Hoje — página inicial"><img src="/assets/img/logo-96.png" width="38" height="38" alt="" /> Meu Pet Hoje</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="/#como">Como funciona</a>
+      <a href="/#demonstracao">Demonstração</a>
+      <a href="/#beneficios">Benefícios</a>
+      <a href="/#planos">Planos</a>
+      <a href="/parceiros.html">Parceiros fundadores</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema"><svg><use href="#i-moon"/></svg></button>
+      <a class="btn btn-primary btn-sm" data-wa="demo" href="https://wa.me/13129897348">Agendar demonstração</a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><svg><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Menu">
+  <a class="dl" href="/#como">Como funciona</a>
+  <a class="dl" href="/#demonstracao">Demonstração</a>
+  <a class="dl" href="/#beneficios">Benefícios</a>
+  <a class="dl" href="/#planos">Planos</a>
+  <a class="dl" href="/parceiros.html">Parceiros fundadores</a>
+  <a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Agendar demonstração</a>
+</nav>
+<main id="conteudo">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="logo">🐾</div>
-    <h1>Meu Pet Hoje</h1>
-    <p>Acompanhe cada momento do seu pet no hotel em tempo real. Fotos, atualizações e notificações direto no seu celular.</p>
-    <div class="badges">
-      <a href="https://apps.apple.com/br/app/meu-pet-hoje/id6774032771" class="badge">
-        🍎 App Store
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.meupethoje.app" class="badge">
-        ▶ Google Play
-      </a>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Para hotéis e creches pet</span>
+        <h1>O tutor viaja tranquilo quando <span class="hl">vê o dia</span> do pet.</h1>
+        <p class="sub">Com o Meu Pet Hoje, sua equipe registra refeições, passeios e fotos em segundos, e o tutor acompanha tudo pelo celular, com o nome do seu hotel em cada atualização.</p>
+        <div class="hero-cta">
+          <a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Agendar demonstração</a>
+          <a class="btn btn-ghost" href="#como">Ver como funciona ↓</a>
+        </div>
+        <div class="hero-store">
+          <a class="store-pill" data-appstore href="https://apps.apple.com/br/app/meu-pet-hoje/id6774032771"><svg><use href="#i-apple"/></svg><span><small>BAIXE NA</small>App Store</span></a>
+          <span>Já disponível para iPhone</span>
+        </div>
+        <ul class="ticks">
+          <li><span class="tk">✓</span> Funciona no celular da equipe</li>
+          <li><span class="tk">✓</span> Convite ao tutor pelo WhatsApp</li>
+          <li><span class="tk">✓</span> Equipe toda no mesmo hotel</li>
+          <li><span class="tk">✓</span> Cada hotel vê só os seus pets</li>
+        </ul>
+      </div>
+
+      <div class="stage" aria-label="Telas reais do aplicativo">
+        <figure class="lock" style="margin:0"><img src="/assets/img/notificacao.jpg" width="820" height="1230" alt="Notificação do Meu Pet Hoje na tela de bloqueio: Jessie recebeu uma nova atualização" fetchpriority="high" /></figure>
+        <div class="device front"><img src="/assets/img/tela-feed.jpg" width="640" height="1391" alt="Tela do tutor: linha do tempo com passeio e fotos da Jessie no hotel" fetchpriority="high" /></div>
+        <figure class="card-alert" style="margin:0"><img src="/assets/img/painel-alerta.jpg" width="640" height="370" alt="Painel do hotel: pets hospedados e aviso de pets que precisam de atualização" loading="lazy" /></figure>
+        <div class="tag"><span class="dot">🔔</span><div>Aviso no celular<small>a cada nova atualização</small></div></div>
+      </div>
+    </div>
+
+    <div class="band" aria-hidden="true">
+      <div class="band-track">
+        <div class="band-in"><span>📸 Fotos e vídeos do dia</span><span>🔔 Aviso no celular do tutor</span><span>💬 Curtidas e comentários</span><span>📝 Resumo da estadia com a sua marca</span><span>🟢 Convite pelo WhatsApp</span><span>👥 Equipe no mesmo painel</span></div>
+        <div class="band-in"><span>📸 Fotos e vídeos do dia</span><span>🔔 Aviso no celular do tutor</span><span>💬 Curtidas e comentários</span><span>📝 Resumo da estadia com a sua marca</span><span>🟢 Convite pelo WhatsApp</span><span>👥 Equipe no mesmo painel</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features">
-    <h2>O que é o Meu Pet Hoje?</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">📸</div>
-        <h3>Fotos e vídeos em tempo real</h3>
-        <p>O hotel posta fotos e vídeos do seu pet durante a estadia. Você vê tudo em uma timeline exclusiva.</p>
+  <!-- PROBLEMA -->
+  <section class="blk" style="padding-bottom:40px">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">O desafio de todo hotel pet</span>
+        <h2>O tutor deixa o pet com você, mas leva a preocupação junto.</h2>
+        <p>E quem sente isso é a sua equipe, no meio da rotina.</p>
       </div>
-      <div class="card">
-        <div class="icon">🔔</div>
-        <h3>Notificações instantâneas</h3>
-        <p>Receba alertas quando seu pet comer, passear, tomar banho ou qualquer atualização acontecer.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🏠</div>
-        <h3>Para hotéis e canis</h3>
-        <p>Ferramenta profissional para hotéis registrarem a rotina dos pets e se comunicarem com os tutores.</p>
-      </div>
-      <div class="card">
-        <div class="icon">❤️</div>
-        <h3>Menos ansiedade</h3>
-        <p>Chega de ligar para o hotel perguntando como está seu pet. Tudo visível no app, a qualquer hora.</p>
+      <div class="pains">
+        <div class="pain reveal"><div class="e">📞</div><h3>Mensagens a qualquer hora</h3><p>"Ele comeu?", "Está bem?". Cada pergunta interrompe quem está dando banho, passeando ou servindo ração.</p></div>
+        <div class="pain reveal"><div class="e">🗂️</div><h3>Fotos soltas no WhatsApp</h3><p>Imagens sem contexto, espalhadas em conversas e grupos, e difíceis de encontrar depois.</p></div>
+        <div class="pain reveal"><div class="e">🙈</div><h3>Cuidado que ninguém vê</h3><p>Sua equipe faz um ótimo trabalho, mas o tutor só vê o pet de volta no check-out.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ROLES -->
-  <section class="roles">
-    <div class="roles-inner">
-      <h2>Para tutores e hotéis</h2>
-      <div class="roles-grid">
-        <div class="role-card">
-          <div class="role-title">🐕 Para tutores</div>
+  <!-- COMO FUNCIONA -->
+  <section class="blk" id="como">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Do check-in ao check-out, o tutor acompanha tudo.</h2>
+        <p>Sem computador, sem instalação complicada: tudo pelo celular que a equipe já usa.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="num"></div><h3>Check-in e convite</h3><p>Você cadastra o pet e convida o tutor pelo WhatsApp. Ele entra com um toque.</p></div>
+        <div class="step reveal"><div class="num"></div><h3>A equipe registra</h3><p>Comeu, passeou, banho, soneca, remédio: botões prontos e, se quiser, foto ou vídeo.</p></div>
+        <div class="step reveal"><div class="num"></div><h3>O tutor recebe na hora</h3><p>Chega um aviso no celular. Ele vê a linha do tempo do dia, curte e comenta.</p></div>
+        <div class="step reveal"><div class="num"></div><h3>Resumo no check-out</h3><p>O tutor recebe o Resumo da Estadia, com os melhores momentos e a marca do seu hotel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMONSTRAÇÃO -->
+  <section class="blk alt" id="demonstracao">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Demonstração</span>
+        <h2>Veja o app por dentro. São telas reais.</h2>
+        <p>Toque em cada etapa e veja o que a equipe e o tutor veem.</p>
+      </div>
+      <div class="demo" id="demo">
+        <div class="demo-tabs" role="tablist" aria-label="Etapas da demonstração" aria-orientation="vertical">
+          <button class="demo-tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="n">⚡</span><span><span class="who">Equipe</span><b>Registra em um toque</b><span class="d">A tela "O que aconteceu?" tem botões prontos para alimentação, passeio, banho, medicação, foto e vídeo.</span></span></button>
+          <button class="demo-tab" role="tab" id="t2" aria-controls="p2" aria-selected="false"><span class="n">🔔</span><span><span class="who">Tutor</span><b>Recebe o aviso</b><span class="d">A notificação chega no celular do tutor assim que a equipe publica.</span></span></button>
+          <button class="demo-tab" role="tab" id="t3" aria-controls="p3" aria-selected="false"><span class="n">📸</span><span><span class="who">Tutor</span><b>Acompanha o dia</b><span class="d">Uma linha do tempo com fotos, horários e o que aconteceu. Dá para curtir e comentar.</span></span></button>
+          <button class="demo-tab" role="tab" id="t4" aria-controls="p4" aria-selected="false"><span class="n">🏨</span><span><span class="who">Hotel</span><b>Vê cada hóspede</b><span class="d">O perfil de cada pet reúne a linha do tempo da hospedagem, os tutores e o check-out.</span></span></button>
+        </div>
+        <div class="demo-view">
+          <div class="demo-shot device" role="tabpanel" id="p1" aria-labelledby="t1"><img src="/assets/img/tela-quick.jpg" width="640" height="1391" alt="Tela 'O que aconteceu?' com botões de alimentação, passeio, foto, banho, medicação, vídeo e mais" /></div>
+          <div class="demo-shot raw" role="tabpanel" id="p2" aria-labelledby="t2"><img src="/assets/img/notificacao.jpg" width="820" height="1230" loading="lazy" alt="Notificação na tela de bloqueio do tutor" /></div>
+          <div class="demo-shot device" role="tabpanel" id="p3" aria-labelledby="t3"><img src="/assets/img/tela-feed.jpg" width="640" height="1391" loading="lazy" alt="Linha do tempo do dia da Jessie, com passeio e fotos" /></div>
+          <div class="demo-shot device" role="tabpanel" id="p4" aria-labelledby="t4"><img src="/assets/img/tela-pet.jpg" width="640" height="1391" loading="lazy" alt="Perfil da Jessie no painel do hotel, com botão Registrar atualização e linha do tempo" /></div>
+        </div>
+      </div>
+
+      <div class="video-wrap reveal">
+        <div class="video-shell">
+          <video controls playsinline preload="none" poster="/assets/img/tela-feed.jpg" aria-label="Vídeo de 25 segundos mostrando o Meu Pet Hoje em uso">
+            <source src="/assets/video/anuncio.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-side">
+          <span class="eyebrow">Em 25 segundos</span>
+          <h3>Aperte o play e veja o app em ação.</h3>
+          <p>O pet se hospeda, a equipe registra os momentos e o tutor acompanha pelo celular. Quer ver com os dados do seu hotel? Mostramos ao vivo, em uma chamada rápida.</p>
+          <div class="hero-cta"><a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Quero uma demonstração</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="blk" id="beneficios">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Benefícios</span>
+        <h2>Bom para quem cuida, bom para quem confia.</h2>
+      </div>
+      <div class="aud">
+        <div class="aud-card main reveal">
+          <div class="ic">🏨</div>
+          <h3>Para o hotel</h3>
+          <p class="lead">Transparência que vira diferencial.</p>
           <ul>
-            <li>Timeline completa do dia do seu pet</li>
-            <li>Fotos e vídeos postados pelo hotel</li>
-            <li>Notificações de alimentação, passeio, banho e mais</li>
-            <li>Histórico completo de estadias</li>
-            <li>Tranquilidade total enquanto você viaja</li>
+            <li>Mostra ao tutor o cuidado que você já tem, todos os dias</li>
+            <li>Uma experiência profissional, com a sua marca, em vez de fotos soltas</li>
+            <li>Um canal organizado para manter contato com cada tutor</li>
+            <li>O painel avisa quais pets estão sem atualização</li>
           </ul>
         </div>
-        <div class="role-card">
-          <div class="role-title">🏨 Para hotéis</div>
+        <div class="aud-card reveal">
+          <div class="ic">🧑‍🤝‍🧑</div>
+          <h3>Para a equipe</h3>
+          <p class="lead">Feito para caber no corre do dia.</p>
           <ul>
-            <li>Registre atualizações com um toque</li>
-            <li>Envie fotos e vídeos facilmente</li>
-            <li>Reduza mensagens no WhatsApp</li>
-            <li>Fidelize clientes com experiência premium</li>
-            <li>Gerencie todos os pets hospedados</li>
+            <li>Registro em poucos toques, com botões prontos</li>
+            <li>Atalho direto da lista de pets para o registro</li>
+            <li>Cada funcionário entra com a própria conta</li>
+            <li>Menos tempo respondendo "como ele está?"</li>
+          </ul>
+        </div>
+        <div class="aud-card reveal">
+          <div class="ic">🐶</div>
+          <h3>Para o tutor</h3>
+          <p class="lead">Tranquilidade enquanto está longe.</p>
+          <ul>
+            <li>Aviso no celular a cada novidade</li>
+            <li>O dia do pet numa linha do tempo, com fotos</li>
+            <li>Curte e comenta cada registro</li>
+            <li>Resumo da estadia para guardar e compartilhar</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>
-      &copy; 2026 Meu Pet Hoje &nbsp;|&nbsp;
-      <a href="/privacy-policy.html">Política de Privacidade</a> &nbsp;|&nbsp;
-      <a href="mailto:suporte@meupethoje.com.br">suporte@meupethoje.com.br</a>
-    </p>
-  </footer>
+  <!-- RELACIONAMENTO -->
+  <section class="blk" style="padding-top:0">
+    <div class="wrap">
+      <div class="spot reveal">
+        <div class="spot-grid">
+          <div>
+            <span class="eyebrow">Relacionamento com o tutor</span>
+            <h2>A estadia termina. O relacionamento continua.</h2>
+            <p>Cada atualização é um ponto de contato com o tutor. No check-out, o Resumo da Estadia reúne os melhores momentos com o nome e o logo do seu hotel, pronto para o tutor guardar e compartilhar.</p>
+            <ul>
+              <li><span class="ck">✓</span> Resumo da Estadia com a marca do hotel</li>
+              <li><span class="ck">✓</span> Curtidas e comentários do tutor em cada registro</li>
+              <li><span class="ck">✓</span> <span>Mensagem de agradecimento após o check-out <em>em implantação</em></span></li>
+              <li><span class="ck">✓</span> <span>Lembretes e campanhas para incentivar novas reservas <em>em breve</em></span></li>
+            </ul>
+            <p class="note">Estamos construindo os recursos de relacionamento junto com os hotéis parceiros e medindo o resultado antes de prometer números.</p>
+          </div>
+          <div>
+            <div class="sharecard" role="img" aria-label="Exemplo ilustrativo de Resumo da Estadia com a marca de um hotel">
+              <div class="sc-top"><div class="sc-logo">PF</div><div class="sc-hotel">Hotel Patas Felizes <small>cuidou da Jessie com carinho 🐾</small></div></div>
+              <div class="sc-photo"></div>
+              <div class="sc-stats"><div class="sc-stat"><b>4</b><span>DIAS</span></div><div class="sc-stat"><b>12</b><span>PASSEIOS</span></div><div class="sc-stat"><b>28</b><span>FOTOS</span></div></div>
+              <div class="sc-cap">"A Jessie teve uma estadia incrível!"</div>
+            </div>
+            <p class="sc-label">Exemplo ilustrativo · hotel fictício</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- RECURSOS -->
+  <section class="blk" id="recursos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Recursos</span>
+        <h2>Tudo o que a rotina de um hotel pet precisa.</h2>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal"><div class="ic">⚡</div><h3>Registro em um toque</h3><p>Alimentação, passeio, banho, medicação, soneca, xixi, cocô, brincadeira e observações.</p></div>
+        <div class="feat reveal"><div class="ic">📸</div><h3>Fotos e vídeos</h3><p>Tire na hora ou escolha da galeria. Tudo fica na linha do tempo do pet.</p></div>
+        <div class="feat reveal"><div class="ic">🔔</div><h3>Notificações</h3><p>O tutor recebe um aviso assim que a equipe publica uma novidade.</p></div>
+        <div class="feat reveal"><div class="ic">🟢</div><h3>Convite por WhatsApp</h3><p>Convide tutores e funcionários com um link seguro, de uso único.</p></div>
+        <div class="feat reveal"><div class="ic">📝</div><h3>Resumo da estadia</h3><p>Os destaques da hospedagem, com o nome e o logo do seu hotel.</p></div>
+        <div class="feat reveal"><div class="ic">🔒</div><h3>Dados separados</h3><p>Cada hotel acessa apenas a própria operação, e cada tutor vê apenas os próprios pets.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS FUNDADORES -->
+  <section class="blk" id="fundadores" style="padding-top:0">
+    <div class="wrap">
+      <div class="founders reveal">
+        <div class="l">
+          <span class="eyebrow">Programa Parceiros Fundadores</span>
+          <h2>Seja um dos primeiros hotéis a usar o Meu Pet Hoje.</h2>
+          <p>Estamos selecionando um pequeno grupo de hotéis e creches para usar o app no dia a dia, com acompanhamento próximo, e ajudar a definir os próximos passos do produto.</p>
+          <span class="slots">🐾 Vagas limitadas</span>
+        </div>
+        <div class="r">
+          <h3>O que o parceiro fundador recebe</h3>
+          <ul>
+            <li><span class="b">1</span><span><strong>Implantação acompanhada:</strong> configuramos o hotel com você e treinamos a equipe.</span></li>
+            <li><span class="b">2</span><span><strong>Condição especial de fundador</strong> quando os planos forem lançados.</span></li>
+            <li><span class="b">3</span><span><strong>Canal direto</strong> para sugerir melhorias e priorizar o que o seu hotel precisa.</span></li>
+            <li><span class="b">4</span><span><strong>Acesso antecipado</strong> aos novos recursos de relacionamento.</span></li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-primary btn-block" href="/parceiros.html">Quero ser parceiro fundador</a>
+            <a class="btn btn-ghost btn-block" data-wa="fundador" href="https://wa.me/13129897348">Tirar dúvidas no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="blk alt" id="planos">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Planos</span>
+        <h2>Planos sob medida para o tamanho do seu hotel.</h2>
+        <p>Estamos definindo os planos com os primeiros parceiros. Fale com a gente para conhecer as condições atuais.</p>
+      </div>
+      <div class="plans">
+        <div class="plan hl reveal">
+          <div class="pt">Parceiro Fundador</div>
+          <div class="pd">Para os primeiros hotéis e creches que entrarem no programa.</div>
+          <div class="pp">Condição especial</div>
+          <ul><li>Todos os recursos do app</li><li>Implantação e treinamento acompanhados</li><li>Canal direto para sugestões</li></ul>
+          <a class="btn btn-primary btn-block" href="/parceiros.html">Quero participar</a>
+        </div>
+        <div class="plan reveal">
+          <div class="pt">Planos mensais</div>
+          <div class="pd">Para hotéis de diferentes tamanhos, com contratação e pagamento online.</div>
+          <div class="pp">Em breve</div>
+          <ul><li>Valores por porte do hotel</li><li>Assinatura e pagamento online</li><li>Sem instalação nem equipamento</li></ul>
+          <a class="btn btn-ghost btn-block" data-wa="Olá! Quero ser avisado quando os planos do Meu Pet Hoje forem lançados." href="https://wa.me/13129897348">Avise-me no lançamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="blk" id="faq">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>O que todo hoteleiro pergunta.</h2>
+      </div>
+      <div class="faq">
+        <details class="qa reveal"><summary>Preciso comprar algum equipamento? <span class="pm">+</span></summary><div class="ans">Não. O app funciona no celular que a sua equipe já usa. Não precisa de computador, câmera nem instalação no hotel.</div></details>
+        <details class="qa reveal"><summary>Meus clientes vão saber usar? <span class="pm">+</span></summary><div class="ans">Sim. O tutor recebe um convite pelo WhatsApp e entra com um toque. A tela dele mostra o dia do pet, com fotos, e permite curtir e comentar.</div></details>
+        <details class="qa reveal"><summary>Dá trabalho para a equipe postar? <span class="pm">+</span></summary><div class="ans">Não. Os botões já vêm prontos (comeu, passeou, banho) e a foto é opcional. Também há um atalho direto da lista de pets para o registro.</div></details>
+        <details class="qa reveal"><summary>Mais de um funcionário pode usar? <span class="pm">+</span></summary><div class="ans">Sim. Você convida a equipe pelo app e cada funcionário entra com a própria conta. Assim cada registro mostra quem cuidou do pet.</div></details>
+        <details class="qa reveal"><summary>Quanto custa? <span class="pm">+</span></summary><div class="ans">Os planos estão sendo definidos com os primeiros hotéis parceiros. Quem entra no programa de Parceiros Fundadores garante uma condição especial. Fale com a gente pelo WhatsApp para conhecer as condições atuais.</div></details>
+        <details class="qa reveal"><summary>E a privacidade dos dados? <span class="pm">+</span></summary><div class="ans">Cada hotel acessa apenas os próprios pets e tutores, e cada tutor vê só os próprios pets. Nunca vendemos dados, e a conta pode ser excluída a qualquer momento no app. Leia a <a href="/privacidade.html" style="color:var(--accent-deep);text-decoration:underline">Política de Privacidade</a>.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="blk" id="contato" style="padding-top:0">
+    <div class="wrap">
+      <div class="final-card reveal">
+        <span class="eyebrow">Vamos conversar?</span>
+        <h2>Veja o Meu Pet Hoje funcionando no seu hotel.</h2>
+        <p>Agende uma demonstração rápida pelo WhatsApp. Mostramos o app, tiramos suas dúvidas e explicamos o programa de Parceiros Fundadores.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" style="background:#fff;color:#C9381B" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Agendar demonstração</a>
+          <a class="btn btn-ghost" href="/parceiros.html">Programa de parceiros</a>
+        </div>
+        <div class="contacts">
+          <a data-email="Quero conhecer o Meu Pet Hoje" href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a>
+        </div>
+        <a class="store-pill" data-appstore href="https://apps.apple.com/br/app/meu-pet-hoje/id6774032771"><svg><use href="#i-apple"/></svg><span><small>BAIXE NA</small>App Store</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/logo-96.png" width="38" height="38" alt="" /> Meu Pet Hoje</a>
+        <p class="ft-note">O diário do pet, do hotel direto para o celular do tutor.</p>
+      </div>
+      <div>
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="/#como">Como funciona</a></li>
+          <li><a href="/#demonstracao">Demonstração</a></li>
+          <li><a href="/#recursos">Recursos</a></li>
+          <li><a href="/#planos">Planos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Para hotéis</h4>
+        <ul>
+          <li><a href="/parceiros.html">Parceiros fundadores</a></li>
+          <li><a data-wa="demo" href="https://wa.me/13129897348">Agendar demonstração</a></li>
+          <li><a data-appstore href="https://apps.apple.com/br/app/meu-pet-hoje/id6774032771">Baixar na App Store</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a data-wa="Olá! Tenho uma dúvida sobre o Meu Pet Hoje." href="https://wa.me/13129897348">WhatsApp</a></li>
+          <li><a data-email="Contato — Meu Pet Hoje" href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-made"><span>© <span id="year">2026</span> Meu Pet Hoje · Diego de Oliveira Santos</span><span>Feito com carinho para quem cuida de pets 🐾</span></div>
+  </div>
+</footer>
+<a class="wa-fab" data-wa="demo" href="https://wa.me/13129897348" aria-label="Falar no WhatsApp"><svg><use href="#i-wa"/></svg><span class="t">Fale com a gente</span></a>
+<script src="/assets/js/site.js?v=2"></script>
 </body>
 </html>

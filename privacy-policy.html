@@ -1,120 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidade — Meu Pet Hoje</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #FAFAF8;
-      color: #1a1a1a;
-      line-height: 1.7;
-      padding: 40px 20px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .logo { text-align: center; margin-bottom: 32px; }
-    .logo span { font-size: 48px; }
-    h1 { font-size: 28px; font-weight: 800; color: #FF6040; margin-bottom: 8px; text-align: center; }
-    .updated { text-align: center; color: #888; font-size: 14px; margin-bottom: 40px; }
-    h2 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin: 32px 0 12px; }
-    p, li { font-size: 15px; color: #444; margin-bottom: 8px; }
-    ul { padding-left: 20px; }
-    a { color: #FF6040; }
-    .contact {
-      background: #fff;
-      border: 1px solid #e8e8e4;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Política de Privacidade — Meu Pet Hoje</title>
+<meta name="description" content="Política de Privacidade do aplicativo Meu Pet Hoje: quais dados coletamos, por que, com quem compartilhamos e como excluir sua conta." />
+<link rel="canonical" href="https://meupethoje.com.br/privacidade.html" />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#FF6040" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Meu Pet Hoje" />
+<meta property="og:title" content="Política de Privacidade — Meu Pet Hoje" />
+<meta property="og:description" content="Política de Privacidade do aplicativo Meu Pet Hoje: quais dados coletamos, por que, com quem compartilhamos e como excluir sua conta." />
+<meta property="og:url" content="https://meupethoje.com.br/privacidade.html" />
+<meta property="og:image" content="https://meupethoje.com.br/assets/img/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/assets/css/site.css?v=2" />
+<style> .legal { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; line-height: 1.7; } .legal h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 10px; } .legal .updated { color: var(--ink-faint); font-size: 15px; font-weight: 600; margin: 0 0 36px; } .legal h2 { font-weight: 700; font-size: 1.4rem; margin: 44px 0 14px; } .legal h3 { font-weight: 700; font-size: 1.08rem; margin: 26px 0 8px; } .legal p, .legal li { color: var(--ink-soft); } .legal p { margin: 0 0 14px; } .legal ul { padding-left: 22px; margin: 0 0 16px; } .legal li { margin-bottom: 8px; } .legal strong { color: var(--ink); font-weight: 800; } .legal a { color: var(--accent-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; } .legal .lead { background: var(--surface-2); border-left: 3px solid var(--accent); border-radius: 0 14px 14px 0; padding: 20px 24px; margin: 0 0 36px; } .legal .lead p { margin: 0; color: var(--ink); font-weight: 700; } .legal .box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin: 20px 0; } .legal table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15.5px; } .legal th, .legal td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; } .legal th { font-family: var(--display); font-weight: 700; color: var(--ink); font-size: 14px; } .legal .tbl-scroll { overflow-x: auto; } @media (max-width: 480px) { .legal { padding: 40px 16px 24px; } .legal th, .legal td { padding: 10px 6px; } } </style>
 </head>
 <body>
-  <div class="logo"><span>🐾</span></div>
-  <h1>Política de Privacidade</h1>
-  <p class="updated">Última atualização: 27 de maio de 2026</p>
-
-  <p>
-    O <strong>Meu Pet Hoje</strong> é um aplicativo para hotéis pet e tutores de animais, desenvolvido por
-    Diego Oliveira. Esta política descreve como coletamos, usamos e protegemos as suas informações.
-  </p>
-
-  <h2>1. Informações que coletamos</h2>
-  <p>Coletamos apenas o necessário para o funcionamento do app:</p>
-  <ul>
-    <li><strong>Dados de conta:</strong> nome, e-mail e senha (armazenados com segurança via Supabase Auth).</li>
-    <li><strong>Dados do hotel:</strong> nome do estabelecimento, telefone e endereço (preenchidos pelo usuário).</li>
-    <li><strong>Dados dos pets:</strong> nome, raça, idade, peso, fotos e atualizações de hospedagem.</li>
-    <li><strong>Fotos e vídeos:</strong> enviados pelo usuário para registrar atualizações dos pets.</li>
-  </ul>
-
-  <h2>2. Como usamos as informações</h2>
-  <ul>
-    <li>Autenticar e identificar usuários no aplicativo.</li>
-    <li>Exibir informações dos pets para hotéis e tutores vinculados.</li>
-    <li>Enviar notificações sobre atualizações dos pets (quando habilitado).</li>
-    <li>Enviar convites de acesso por e-mail.</li>
-  </ul>
-
-  <h2>3. Compartilhamento de dados</h2>
-  <p>
-    <strong>Não vendemos, alugamos ou compartilhamos</strong> seus dados com terceiros para fins
-    comerciais. Os dados são compartilhados somente entre o hotel pet e os tutores
-    explicitamente vinculados ao pet.
-  </p>
-  <p>Utilizamos os seguintes serviços de terceiros:</p>
-  <ul>
-    <li><strong>Supabase</strong> — banco de dados e autenticação (servidores na AWS, região us-east-1).</li>
-    <li><strong>Resend</strong> — envio de e-mails transacionais (convites).</li>
-  </ul>
-
-  <h2>4. Armazenamento e segurança</h2>
-  <p>
-    Seus dados são armazenados em servidores seguros com criptografia em trânsito (HTTPS/TLS)
-    e em repouso. Senhas nunca são armazenadas em texto simples — utilizamos o sistema de
-    autenticação do Supabase com hashing bcrypt.
-  </p>
-  <p>
-    No dispositivo, mantemos apenas a sessão de login em armazenamento seguro (iOS Keychain /
-    Android Keystore) e nunca em texto simples.
-  </p>
-
-  <h2>5. Seus direitos</h2>
-  <p>Você pode, a qualquer momento:</p>
-  <ul>
-    <li><strong>Acessar</strong> seus dados pelo próprio aplicativo.</li>
-    <li><strong>Corrigir</strong> informações incorretas na tela de perfil.</li>
-    <li><strong>Excluir</strong> sua conta e todos os dados associados — entre em contato conosco.</li>
-    <li><strong>Revogar</strong> o acesso de tutores aos pets a qualquer momento.</li>
-  </ul>
-
-  <h2>6. Dados de menores</h2>
-  <p>
-    O aplicativo não é destinado a crianças menores de 13 anos. Não coletamos intencionalmente
-    dados de menores.
-  </p>
-
-  <h2>7. Câmera e galeria de fotos</h2>
-  <p>
-    O acesso à câmera e galeria é solicitado apenas para enviar fotos e vídeos dos pets.
-    Essas mídias são armazenadas no nosso servidor e exibidas para os tutores vinculados.
-    Não usamos câmera em segundo plano.
-  </p>
-
-  <h2>8. Alterações nesta política</h2>
-  <p>
-    Podemos atualizar esta política periodicamente. Notificaremos usuários sobre mudanças
-    significativas via e-mail ou notificação no app.
-  </p>
-
-  <div class="contact">
-    <h2 style="margin-top:0">9. Contato</h2>
-    <p>Dúvidas sobre privacidade? Entre em contato:</p>
-    <p>📧 <a href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a></p>
-    <p>🌐 <a href="https://meupethoje.com.br">meupethoje.com.br</a></p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.55.02-2.97.9-3.77 2.28-1.6 2.79-.41 6.92 1.16 9.18.76 1.11 1.67 2.35 2.87 2.31 1.15-.05 1.58-.75 2.97-.75 1.39 0 1.78.75 3 .72 1.24-.02 2.02-1.13 2.78-2.24.87-1.28 1.23-2.52 1.25-2.59-.03-.01-2.4-.92-2.42-3.69ZM14.1 5.82c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.1 1.77-.96 2.82 1.02.08 2.06-.52 2.7-1.28Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></symbol>
+</svg>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Meu Pet Hoje — página inicial"><img src="/assets/img/logo-96.png" width="38" height="38" alt="" /> Meu Pet Hoje</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="/#como">Como funciona</a>
+      <a href="/#demonstracao">Demonstração</a>
+      <a href="/#beneficios">Benefícios</a>
+      <a href="/#planos">Planos</a>
+      <a href="/parceiros.html">Parceiros fundadores</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema"><svg><use href="#i-moon"/></svg></button>
+      <a class="btn btn-primary btn-sm" data-wa="demo" href="https://wa.me/13129897348">Agendar demonstração</a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><svg><use href="#i-menu"/></svg></button>
+    </div>
   </div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Menu">
+  <a class="dl" href="/#como">Como funciona</a>
+  <a class="dl" href="/#demonstracao">Demonstração</a>
+  <a class="dl" href="/#beneficios">Benefícios</a>
+  <a class="dl" href="/#planos">Planos</a>
+  <a class="dl" href="/parceiros.html">Parceiros fundadores</a>
+  <a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Agendar demonstração</a>
+</nav>
+<main id="conteudo" class="legal">
+  <h1>Política de Privacidade</h1>
+  <p class="updated">Última atualização: 23 de outubro de 2026</p>
+
+  <div class="lead">
+    <p>Resumindo: coletamos só o necessário para o app funcionar, nunca vendemos seus dados, e você pode apagar sua conta a qualquer momento direto no aplicativo.</p>
+  </div>
+
+  <p>Esta política explica como o aplicativo <strong>Meu Pet Hoje</strong> trata as informações de quem o utiliza — tanto os hotéis e creches de pets quanto os tutores que acompanham seus animais. Ao usar o app, você concorda com o descrito aqui.</p>
+
+  <h2>1. Quem somos</h2>
+  <p>O Meu Pet Hoje é um aplicativo que permite que hotéis e creches de animais registrem o dia a dia dos pets hospedados (refeições, passeios, banhos, fotos) e que os tutores acompanhem tudo em tempo real pelo celular.</p>
+  <p>Responsável pelo tratamento dos dados: <strong>Diego de Oliveira Santos</strong>. Contato: <a href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a>.</p>
+
+  <h2>2. Quais dados coletamos</h2>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr><th>Dado</th><th>Para que usamos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>E-mail e senha</strong></td><td>Criar e acessar sua conta</td></tr>
+        <tr><td><strong>Nome e telefone</strong></td><td>Identificar você no app e permitir contato entre hotel e tutor</td></tr>
+        <tr><td><strong>Dados do hotel</strong> (nome, endereço, telefone, logo)</td><td>Identificar o estabelecimento no app e no resumo da estadia</td></tr>
+        <tr><td><strong>Dados do pet</strong> (nome, raça, idade, peso, alergias, medicações, veterinário, observações)</td><td>Permitir que o hotel cuide adequadamente do animal</td></tr>
+        <tr><td><strong>Fotos e vídeos</strong></td><td>Registrar e mostrar os momentos do pet aos tutores</td></tr>
+        <tr><td><strong>Token de notificação</strong></td><td>Enviar avisos ao celular quando houver novidade do pet</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Não coletamos</strong> dados de localização, contatos da sua agenda, histórico de navegação, nem informações financeiras. O aplicativo não processa pagamentos.</p>
+
+  <h3>Permissões do aparelho</h3>
+  <ul>
+    <li><strong>Câmera e galeria de fotos:</strong> apenas quando você escolhe tirar ou enviar uma foto do pet. Não acessamos suas fotos sem essa ação.</li>
+    <li><strong>Notificações:</strong> para avisar sobre novas atualizações do pet. Você pode desativar nos ajustes do aparelho.</li>
+  </ul>
+
+  <h2>3. Por que tratamos esses dados</h2>
+  <p>Tratamos seus dados para executar o serviço que você contratou ou do qual participa: permitir que o hotel registre o cuidado com o pet e que o tutor acompanhe. A base legal é a <strong>execução de contrato</strong> e, quando aplicável, o seu <strong>consentimento</strong> (por exemplo, ao permitir notificações).</p>
+
+  <h2>4. Com quem compartilhamos</h2>
+  <p><strong>Não vendemos seus dados.</strong> Não fazemos publicidade com eles e não os cedemos a terceiros para fins de marketing.</p>
+  <p>Compartilhamos apenas o indispensável para o app funcionar:</p>
+  <ul>
+    <li><strong>Entre hotel e tutor:</strong> o hotel vê os dados dos pets sob seus cuidados; o tutor vê as atualizações dos seus próprios pets. Cada hotel acessa somente os dados da sua operação.</li>
+    <li><strong>Supabase</strong> — serviço que hospeda o banco de dados e a autenticação.</li>
+    <li><strong>Expo</strong> — serviço que entrega as notificações push ao seu celular.</li>
+  </ul>
+  <p>Também podemos divulgar informações se formos legalmente obrigados por autoridade competente.</p>
+
+  <h2>5. Por quanto tempo guardamos</h2>
+  <p>Mantemos seus dados enquanto sua conta existir. Ao excluir a conta, os dados associados são removidos conforme descrito abaixo. Registros podem ser mantidos por mais tempo apenas quando houver obrigação legal.</p>
+
+  <h2>6. Seus direitos</h2>
+  <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você pode a qualquer momento:</p>
+  <ul>
+    <li>Confirmar que tratamos seus dados e acessá-los</li>
+    <li>Corrigir dados incompletos ou desatualizados</li>
+    <li>Solicitar a exclusão dos seus dados</li>
+    <li>Revogar o consentimento dado</li>
+    <li>Solicitar informações sobre com quem compartilhamos</li>
+  </ul>
+  <p>Para exercer qualquer um desses direitos, escreva para <a href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a>.</p>
+
+  <div class="box">
+    <h3 style="margin-top:0">🗑️ Como excluir sua conta</h3>
+    <p style="margin-bottom:0">Dentro do aplicativo, vá em <strong>Configurações → Excluir minha conta</strong>. A exclusão é permanente e apaga sua conta e os dados associados a ela. Você também pode solicitar a exclusão por e-mail.</p>
+  </div>
+
+  <h2>7. Segurança</h2>
+  <p>Os dados trafegam criptografados (HTTPS) e ficam armazenados em servidores com controle de acesso. O banco de dados usa regras que isolam as informações de cada hotel e de cada tutor, de modo que ninguém acesse dados que não lhe pertencem. Ainda assim, nenhum sistema é totalmente imune a incidentes — por isso mantemos as proteções atualizadas.</p>
+
+  <h2>8. Crianças</h2>
+  <p>O aplicativo é destinado a maiores de 18 anos — profissionais de hotéis de pets e tutores de animais. Não coletamos intencionalmente dados de crianças.</p>
+
+  <h2>9. Alterações nesta política</h2>
+  <p>Se mudarmos esta política, atualizaremos a data no topo desta página. Mudanças relevantes serão comunicadas no próprio aplicativo.</p>
+
+  <h2>10. Contato</h2>
+  <p>Dúvidas sobre privacidade ou sobre esta política? Escreva para <a href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a>. Respondemos o quanto antes.</p>
+</main>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/logo-96.png" width="38" height="38" alt="" /> Meu Pet Hoje</a>
+        <p class="ft-note">O diário do pet, do hotel direto para o celular do tutor.</p>
+      </div>
+      <div>
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="/#como">Como funciona</a></li>
+          <li><a href="/#demonstracao">Demonstração</a></li>
+          <li><a href="/#recursos">Recursos</a></li>
+          <li><a href="/#planos">Planos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Para hotéis</h4>
+        <ul>
+          <li><a href="/parceiros.html">Parceiros fundadores</a></li>
+          <li><a data-wa="demo" href="https://wa.me/13129897348">Agendar demonstração</a></li>
+          <li><a data-appstore href="https://apps.apple.com/br/app/meu-pet-hoje/id6774032771">Baixar na App Store</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a data-wa="Olá! Tenho uma dúvida sobre o Meu Pet Hoje." href="https://wa.me/13129897348">WhatsApp</a></li>
+          <li><a data-email="Contato — Meu Pet Hoje" href="mailto:osd.negocios@gmail.com">osd.negocios@gmail.com</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-made"><span>© <span id="year">2026</span> Meu Pet Hoje · Diego de Oliveira Santos</span><span>Feito com carinho para quem cuida de pets 🐾</span></div>
+  </div>
+</footer>
+<a class="wa-fab" data-wa="demo" href="https://wa.me/13129897348" aria-label="Falar no WhatsApp"><svg><use href="#i-wa"/></svg><span class="t">Fale com a gente</span></a>
+<script src="/assets/js/site.js?v=2"></script>
 </body>
 </html>
