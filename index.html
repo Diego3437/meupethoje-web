@@ -25,7 +25,7 @@
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/assets/css/site.css?v=2" />
-<link rel="stylesheet" href="/assets/css/home.css?v=3" />
+<link rel="stylesheet" href="/assets/css/home.css?v=4" />
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -102,6 +102,42 @@
     </div>
   </section>
 
+
+  <!-- COMO FUNCIONA: VÍDEOS -->
+  <section class="blk tut" id="como" aria-labelledby="como-titulo">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Como funciona</span>
+        <h2 id="como-titulo">Veja o Meu Pet Hoje em uso</h2>
+        <p>Tutoriais curtos, com as telas reais do app.</p>
+      </div>
+      <div class="tut-tabs" role="tablist" aria-label="Tutoriais">
+        <button class="tut-tab" role="tab" id="tt-hotel" aria-controls="tp-hotel" aria-selected="true">🏨 Para o hotel</button>
+        <button class="tut-tab" role="tab" id="tt-tutor" aria-controls="tp-tutor" aria-selected="false" tabindex="-1">🐶 Para o tutor</button>
+      </div>
+      <div class="tut-panel" role="tabpanel" id="tp-hotel" aria-labelledby="tt-hotel">
+        <div class="tut-video">
+          <video controls playsinline preload="metadata" poster="/assets/img/poster-hotel-16x9.jpg" data-poster-v="/assets/img/poster-hotel-9x16.jpg" aria-label="Tutorial do Meu Pet Hoje para hotéis, 81 segundos, com narração">
+            <source src="/assets/video/tutorial-hotel-9x16.mp4" type="video/mp4" media="(max-width: 700px)" />
+            <source src="/assets/video/tutorial-hotel-16x9.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p class="tut-text">Cadastre pets, registre fotos e atualizações em poucos toques e compartilhe a rotina com os tutores.</p>
+        <a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Solicite uma demonstração</a>
+      </div>
+      <div class="tut-panel" role="tabpanel" id="tp-tutor" aria-labelledby="tt-tutor" hidden>
+        <div class="tut-video">
+          <video controls playsinline preload="metadata" poster="/assets/img/poster-tutor-16x9.jpg" data-poster-v="/assets/img/poster-tutor-9x16.jpg" aria-label="Tutorial do Meu Pet Hoje para tutores, 34 segundos, com narração">
+            <source src="/assets/video/tutorial-tutor-9x16.mp4" type="video/mp4" media="(max-width: 700px)" />
+            <source src="/assets/video/tutorial-tutor-16x9.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p class="tut-text">Receba avisos e acompanhe a rotina do seu pet pelo app, mesmo de longe.</p>
+        <a class="btn btn-wa" data-wa="demo" href="https://wa.me/13129897348"><svg><use href="#i-wa"/></svg> Solicite uma demonstração</a>
+      </div>
+    </div>
+  </section>
+
   <!-- PROBLEMA -->
   <section class="blk" style="padding-bottom:40px">
     <div class="wrap">
@@ -118,11 +154,11 @@
     </div>
   </section>
 
-  <!-- COMO FUNCIONA -->
-  <section class="blk" id="como">
+  <!-- PASSO A PASSO -->
+  <section class="blk" id="etapas">
     <div class="wrap">
       <div class="sec-head center reveal">
-        <span class="eyebrow">Como funciona</span>
+        <span class="eyebrow">Passo a passo</span>
         <h2>Do check-in ao check-out, o tutor acompanha tudo.</h2>
         <p>Sem computador, sem instalação complicada: tudo pelo celular que a equipe já usa.</p>
       </div>
@@ -396,6 +432,6 @@
   </div>
 </footer>
 <a class="wa-fab" data-wa="demo" href="https://wa.me/13129897348" aria-label="Falar no WhatsApp"><svg><use href="#i-wa"/></svg><span class="t">Fale com a gente</span></a>
-<script src="/assets/js/site.js?v=2"></script>
+<script src="/assets/js/site.js?v=3"></script>
 </body>
 </html>
