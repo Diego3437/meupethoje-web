@@ -113,13 +113,13 @@
   .demo-view { max-width: 270px; }
 }
 
-.video-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 52px; align-items: center; margin-top: 88px; }
-.video-shell { position: relative; max-width: 300px; margin-inline: auto; border-radius: 34px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: #000; }
-.video-shell video { display: block; width: 100%; height: auto; }
+.video-wrap { display: grid; grid-template-columns: 1.35fr .65fr; gap: 44px; align-items: center; margin-top: 88px; }
+.video-shell { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: #1a100c; }
+.video-shell video { display: block; width: 100%; height: 100%; object-fit: contain; background: #1a100c; }
 .video-side h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-top: 14px; }
 .video-side p { color: var(--ink-soft); margin-top: 14px; font-size: 1.06rem; }
 .video-side .hero-cta { margin-top: 24px; }
-@media (max-width: 860px) { .video-wrap { grid-template-columns: 1fr; gap: 28px; margin-top: 64px; } .video-side { text-align: center; } .video-side .eyebrow, .video-side .hero-cta { justify-content: center; } }
+@media (max-width: 860px) { .video-wrap { grid-template-columns: 1fr; gap: 28px; margin-top: 64px; } .video-shell { max-width: 380px; margin-inline: auto; aspect-ratio: 9 / 16; } .video-side { text-align: center; } .video-side .eyebrow, .video-side .hero-cta { justify-content: center; } }
 
 /* ---------- Audience benefits ---------- */
 .aud { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -216,28 +216,3 @@ details.qa .ans { padding: 0 0 20px; color: var(--ink-soft); font-size: 15.5px; 
 .contacts a { color: #fff; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.5); }
 .final-card .store-pill { background: #fff; color: #2A1B14; margin-top: 26px; }
 @media (max-width: 480px) { .final-card { padding: 46px 18px; } .final-card .hero-cta .btn { width: 100%; } }
-
-/* ---------- Tutoriais em vídeo (Como funciona) ---------- */
-.tut { padding-top: 72px; }
-.tut-tabs { display: flex; justify-content: center; gap: 10px; margin: 0 auto 28px; flex-wrap: wrap; }
-.tut-tab {
-  font: inherit; font-family: var(--display); font-weight: 700; font-size: 16px; cursor: pointer;
-  padding: 12px 22px; border-radius: 100px; border: 1.5px solid var(--line-strong);
-  background: var(--surface); color: var(--ink-soft); transition: border-color .15s, background .15s, color .15s;
-}
-.tut-tab:hover { border-color: var(--accent); color: var(--accent-deep); }
-.tut-tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-.tut-panel { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.tut-panel[hidden] { display: none; }
-.tut-video {
-  width: 100%; max-width: 900px; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden;
-  background: #1a100c; box-shadow: var(--shadow); border: 1px solid var(--line);
-}
-.tut-video video { display: block; width: 100%; height: 100%; object-fit: contain; background: #1a100c; }
-.tut-text { color: var(--ink-soft); font-size: 1.08rem; max-width: 52ch; margin: 22px auto 20px; }
-@media (max-width: 700px) {
-  .tut { padding-top: 48px; }
-  .tut-video { max-width: 380px; aspect-ratio: 9 / 16; }
-  .tut-tab { flex: 1 1 0; padding: 12px 10px; font-size: 15px; }
-  .tut-panel .btn { width: 100%; max-width: 380px; }
-}
