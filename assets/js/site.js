@@ -110,3 +110,42 @@ document.documentElement.classList.add("js");
 
   var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
 })();
+
+/* Tutoriais em vídeo: abas + capa vertical no celular */
+(function () {
+  var sec = document.getElementById("como");
+  if (!sec) return;
+  var mq = window.matchMedia("(max-width: 700px)");
+  var vids = sec.querySelectorAll("video[data-poster-v]");
+  vids.forEach(function (v) { v.setAttribute("data-poster-h", v.getAttribute("poster")); });
+  function syncPosters() {
+    vids.forEach(function (v) { v.poster = mq.matches ? v.getAttribute("data-poster-v") : v.getAttribute("data-poster-h"); });
+  }
+  syncPosters();
+  // O navegador escolhe o <source> só no carregamento; ao cruzar o breakpoint, recarrega o vídeo (se não estiver tocando).
+  var wasMobile = mq.matches;
+  var onChange = function () {
+    syncPosters();
+    if (mq.matches === wasMobile) return; wasMobile = mq.matches;
+    vids.forEach(function (v) { if (v.paused) v.load(); });
+  };
+  if (mq.addEventListener) mq.addEventListener("change", onChange); else mq.addListener(onChange);
+
+  var tabs = sec.querySelectorAll("[role=tab]");
+  function select(i) {
+    tabs.forEach(function (t, j) {
+      var on = i === j, panel = document.getElementById(t.getAttribute("aria-controls"));
+      t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
+      panel.hidden = !on;
+      if (!on) { var v = panel.querySelector("video"); if (v && !v.paused) v.pause(); }
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { select(i); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault(); var n = (i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length; select(n); tabs[n].focus();
+      }
+    });
+  });
+})();
