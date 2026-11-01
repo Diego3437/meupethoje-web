@@ -112,7 +112,7 @@ header.nav {
 }
 header.nav.scrolled { border-bottom-color: var(--line); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 19px; letter-spacing: -.02em; white-space: nowrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 19px; letter-spacing: -.02em; white-space: nowrap; flex-shrink: 0; }
 .brand img { width: 38px; height: 38px; border-radius: 10px; box-shadow: var(--shadow-sm); }
 .nav-links { display: flex; align-items: center; gap: 26px; }
 .nav-links a { font-weight: 700; font-size: 15px; color: var(--ink-soft); transition: color .15s; }
@@ -125,12 +125,15 @@ header.nav.scrolled { border-bottom-color: var(--line); }
 }
 .icon-btn:hover { border-color: var(--accent); }
 .icon-btn svg { width: 20px; height: 20px; }
+@keyframes mph-spin { from { transform: rotate(-90deg) scale(.6); opacity: .2; } to { transform: none; opacity: 1; } }
+#themeBtn.spin svg { animation: mph-spin .45s cubic-bezier(.2,.8,.2,1); }
+@media (prefers-reduced-motion: reduce) { #themeBtn.spin svg { animation: none; } }
 .menu-btn { display: none; }
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-btn { display: grid; }
 }
-@media (max-width: 420px) { .nav-right .btn { display: none; } }
+@media (max-width: 600px) { .nav-right .btn { display: none; } }
 .drawer {
   position: fixed; inset: 70px 0 auto 0; z-index: 59; background: var(--bg);
   border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
