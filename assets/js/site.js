@@ -28,12 +28,21 @@ document.documentElement.classList.add("js");
   var root = document.documentElement, tbtn = document.getElementById("themeBtn");
   try { var saved = localStorage.getItem("mph-theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
   function isDark() { var t = root.getAttribute("data-theme"); return t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches); }
-  function syncTheme() { if (tbtn) tbtn.setAttribute("aria-label", isDark() ? "Usar tema claro" : "Usar tema escuro"); }
+  // O ícone mostra o tema para o qual o botão leva: lua no claro, sol no escuro
+  function syncTheme() {
+    if (!tbtn) return;
+    var d = isDark(), u = tbtn.querySelector("use");
+    tbtn.setAttribute("aria-label", d ? "Usar tema claro" : "Usar tema escuro");
+    tbtn.title = d ? "Tema claro" : "Tema escuro";
+    if (u) { u.setAttribute("href", d ? "#i-sun" : "#i-moon"); u.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", d ? "#i-sun" : "#i-moon"); }
+  }
   if (tbtn) tbtn.addEventListener("click", function () {
     var next = isDark() ? "light" : "dark"; root.setAttribute("data-theme", next);
     try { localStorage.setItem("mph-theme", next); } catch (e) {}
     syncTheme();
+    tbtn.classList.remove("spin"); void tbtn.offsetWidth; tbtn.classList.add("spin");
   });
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncTheme); } catch (e) {}
   syncTheme();
 
   // Menu mobile
