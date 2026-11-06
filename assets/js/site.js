@@ -4,6 +4,7 @@ var MPH = {
   whatsapp: "13129897348",              // número do WhatsApp (DDI + número, só dígitos)
   email: "osd.negocios@gmail.com",
   appStore: "https://apps.apple.com/br/app/meu-pet-hoje/id6774032771",
+  playStore: "https://play.google.com/store/apps/details?id=com.meupethoje.app",
   msgDemo: "Olá! Tenho um hotel/creche pet e quero agendar uma demonstração do Meu Pet Hoje.",
   msgFundador: "Olá! Quero saber mais sobre o programa de Parceiros Fundadores do Meu Pet Hoje."
 };
@@ -23,6 +24,7 @@ document.documentElement.classList.add("js");
     if (!a.textContent.trim()) a.textContent = MPH.email;
   });
   document.querySelectorAll("[data-appstore]").forEach(function (a) { a.href = MPH.appStore; a.target = "_blank"; a.rel = "noopener"; });
+  document.querySelectorAll("[data-playstore]").forEach(function (a) { a.href = MPH.playStore; a.target = "_blank"; a.rel = "noopener"; });
 
   // Tema claro/escuro (padrão: sistema)
   var root = document.documentElement, tbtn = document.getElementById("themeBtn");
