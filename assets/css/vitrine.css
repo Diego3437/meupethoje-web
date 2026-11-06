@@ -1,0 +1,218 @@
+/* Vitrine de hotéis — páginas geradas por tools/gerar-vitrine.mjs
+ *
+ * Arquivo separado de propósito: nada aqui altera as páginas que já existem.
+ * Usa só os tokens de site.css (--ink, --accent, --line, --radius...), então
+ * claro e escuro funcionam sem uma única cor escrita à mão.
+ */
+
+/* ------------------------------------------------------------------ topo  */
+.vt-hero {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.vt-migalhas {
+  font-size: .9rem;
+  color: var(--ink-faint);
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.vt-migalhas a { color: var(--ink-soft); text-decoration: none; }
+.vt-migalhas a:hover { color: var(--accent); text-decoration: underline; }
+.vt-migalhas [aria-current] { color: var(--ink); font-weight: 600; }
+
+.vt-cabeca {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.vt-logo {
+  width: 88px; height: 88px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  flex: none;
+}
+
+.vt-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  line-height: 1.1;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.vt-local {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+.vt-desc {
+  margin: 22px 0 26px;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+/* Só o texto escrito pelo hotel respeita as quebras de linha dele.  Aplicar
+   isso ao .vt-desc geral fazia os textos do site quebrarem onde o código
+   quebrava, não onde a frase pedia. */
+.vt-desc-hotel { white-space: pre-line; }
+
+/* --------------------------------------------------------------- blocos  */
+.vt-bloco { padding: 40px 0; }
+.vt-bloco + .vt-bloco { border-top: 1px solid var(--line); }
+.vt-bloco h2 {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------- serviços  */
+.vt-servicos {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.vt-servicos li {
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- fotos  */
+.vt-fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.vt-fotos img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+/* ------------------------------------------------- lista de hotéis       */
+.vt-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.vt-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.vt-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.vt-card img {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex: none;
+  border: 1px solid var(--line);
+}
+.vt-card-sem {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  display: grid; place-items: center;
+  font-size: 1.6rem;
+  flex: none;
+}
+.vt-card-txt { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.vt-card-txt strong {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.vt-card-local { font-size: .88rem; color: var(--ink-faint); }
+.vt-card-desc {
+  font-size: .94rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.vt-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.vt-card-tags span {
+  font-size: .76rem;
+  font-weight: 600;
+  background: var(--accent-weak);
+  color: var(--accent-deep);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* -------------------------------------------------------------- cidades  */
+.vt-cidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.vt-cidade {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.vt-cidade:hover { border-color: var(--accent); transform: translateY(-2px); }
+.vt-cidade strong {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.vt-cidade span { font-size: .82rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .04em; }
+.vt-cidade em { font-style: normal; font-size: .9rem; color: var(--accent-deep); font-weight: 600; margin-top: 6px; }
+
+/* ----------------------------------------------- chamadas no fim da página */
+.vt-acompanhe, .vt-convite { background: var(--surface-2); }
+.vt-acompanhe p, .vt-convite p {
+  max-width: 58ch;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+/* Botão grande: site.css tem btn-sm, mas não a versão grande que a página do
+   hotel pede para o contato por WhatsApp. */
+.btn-lg {
+  font-size: 1.05rem;
+  padding: 15px 28px;
+}
+
+@media (max-width: 560px) {
+  .vt-hero { padding: 32px 0 24px; }
+  .vt-logo { width: 68px; height: 68px; border-radius: 16px; }
+  .vt-lista, .vt-cidades { grid-template-columns: 1fr; }
+}

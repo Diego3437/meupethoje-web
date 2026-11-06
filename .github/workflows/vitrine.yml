@@ -1,0 +1,58 @@
+name: Gerar vitrine de hotéis
+
+# Roda sozinho e republica o site quando a lista de hotéis aprovados muda.
+#
+# QUANDO RODA
+# - de 6 em 6 horas, para pegar aprovações sem ninguém precisar lembrar
+# - quando você aperta "Run workflow" na aba Actions, logo após aprovar um
+#   hotel, se não quiser esperar
+#
+# SE NADA MUDOU, NÃO COMMITA — o histórico do site não enche de commits vazios.
+#
+# SE NENHUM HOTEL ESTIVER APROVADO, o gerador não escreve nada, de propósito:
+# busca vazia vende contra o produto.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+# Precisa escrever no próprio repositório para publicar as páginas.
+permissions:
+  contents: write
+
+# Duas execuções ao mesmo tempo brigariam pelo mesmo commit.
+concurrency:
+  group: vitrine
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar páginas
+        env:
+          # A chave publicável já é pública (vai no bundle do app).  Fica como
+          # variável mesmo assim, para trocar sem mexer no código.
+          SUPABASE_URL: ${{ vars.SUPABASE_URL || 'https://dvgntkyhrjfrvnbkghhf.supabase.co' }}
+          SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY || 'sb_publishable_aOO9KJl7KL2e0feXlFjlHA_RK8S-YOx' }}
+        run: node tools/gerar-vitrine.mjs
+
+      - name: Publicar, se mudou alguma coisa
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nada mudou — nenhum hotel novo aprovado. Sem commit."
+            exit 0
+          fi
+          git config user.name  "Vitrine (automático)"
+          git config user.email "actions@github.com"
+          git add hoteis sitemap.xml
+          git commit -m "vitrine: atualiza páginas dos hotéis aprovados"
+          git push
+          echo "Páginas publicadas."
