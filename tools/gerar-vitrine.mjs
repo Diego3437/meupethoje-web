@@ -96,6 +96,32 @@ function resumo(txt, max = 155) {
 /** Só dígitos — o link do WhatsApp não aceita nada além. */
 const soDigitos = (s) => String(s ?? '').replace(/\D/g, '');
 
+/**
+ * Número de hotel brasileiro pronto para o wa.me.
+ *
+ * O hotel digita "(11) 97461-7531" e o app guarda "11974617531".  Sem o 55 na
+ * frente, o WhatsApp lê o "1" inicial como Estados Unidos e o link cai num
+ * número que não existe — o botão fica visivelmente certo e silenciosamente
+ * quebrado.  Foi assim que o primeiro hotel real entrou no ar.
+ *
+ * Normaliza aqui, e não só no banco, para consertar também o que já está
+ * gravado sem o código do país.
+ */
+function zapBrasil(valor) {
+  const bruto = String(valor ?? '').trim();
+  const d = soDigitos(bruto);
+  if (!d) return '';
+
+  // "+" escrito pelo hotel significa que ele já informou o país.  É a única
+  // forma de distinguir um número americano de 11 dígitos de um brasileiro —
+  // 13129897348 é tanto "+1 312..." quanto o DDD 13 de Santos.
+  if (bruto.startsWith('+')) return d;
+
+  if (d.startsWith('55') && d.length >= 12 && d.length <= 13) return d;  // já tem país
+  if (d.length === 10 || d.length === 11) return '55' + d;               // DDD + número
+  return d;                                                              // não sei: deixa como está
+}
+
 function escreve(caminho, conteudo) {
   const destino = join(SAIDA_ALT || RAIZ, caminho);
   if (DRY) { console.log(`  [seco] escreveria ${caminho} (${conteudo.length} bytes)`); return; }
@@ -192,7 +218,7 @@ const migalhas = (itens) => ({
 function paginaHotel(h, chrome) {
   const url = `${SITE}/hoteis/${h.cidade_slug}/${h.slug}`;
   const local = `${h.cidade}${h.estado ? `, ${h.estado}` : ''}`;
-  const zap = soDigitos(h.whatsapp);
+  const zap = zapBrasil(h.whatsapp);
   const servicos = Array.isArray(h.servicos) ? h.servicos.filter(Boolean) : [];
   const fotos = Array.isArray(h.fotos) ? h.fotos.filter(Boolean) : [];
 
